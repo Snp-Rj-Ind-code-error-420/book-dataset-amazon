@@ -1,0 +1,1 @@
+This project aims to provide useful insights into the Amazon Books dataset. By analyzing the dataset, we can gain a better understanding of book popularity, author productivity, and rating and review trends. These insights can be used by publishers, authors, and readers to make informed decisions about books.
