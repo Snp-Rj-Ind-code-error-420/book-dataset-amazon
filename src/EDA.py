@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
 st.set_page_config(page_title="EDA", 
-	page_icon="<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\" width=\"24px\" fill=\"#EA33F7\"><path d=\"M70-424q-13-9-15.5-24.5T60-478l122-196q22-35 62.5-37.5T311-683l49 57 95-154q23-38 66.5-38.5T589-782l51 76 112-178q9-15 26.5-18.5T810-895q13 9 15.5 24.5T820-841L708-663q-23 37-66.5 37T574-662l-51-76-95 154q-21 35-61.5 38T300-574l-50-58-122 197q-9 15-26.5 18.5T70-424Zm510 184q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm0 80q-75 0-127.5-52.5T400-340q0-75 52.5-127.5T580-520q75 0 127.5 52.5T760-340q0 26-7 50.5T732-244l80 80q11 11 11 28t-11 28q-11 11-28 11t-28-11l-80-80q-21 14-45.5 21t-50.5 7Z\"/></svg>",
+	page_icon="<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\" width=\"24px\" fill=\"#EA33F7\"><path d=\"M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480v320q0 33-23.5 56.5T800-80H480Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 23 3 45t9 43l122-122q11-11 26.5-11.5T348-516l104 87 131-131h-23q-17 0-28.5-11.5T520-600q0-17 11.5-28.5T560-640h120q17 0 28.5 11.5T720-600v120q0 17-11.5 28.5T680-440q-17 0-28.5-11.5T640-480v-23L482-346q-11 11-26.5 12T428-344l-103-88-118 118q42 69 113.5 111.5T480-160Zm300 20q17 0 28.5-11.5T820-180q0-17-11.5-28.5T780-220q-17 0-28.5 11.5T740-180q0 17 11.5 28.5T780-140ZM455-480Z\"/></svg>",
 	layout="centered",
 	initial_sidebar_state="auto",  
 	menu_items=None)
-st.title(":violet[:material/query_stats:]   :violet[Exploratory Data Analysis on the dataset]")
+st.title(":violet[:material/data_exploration:]   :violet[Exploratory Data Analysis on the dataset]")
 st.divider()
 
 st.header("Data Cleaning")
@@ -88,15 +88,18 @@ with st.container(border=True):
 	st.subheader("2.Cleaning the data")
 
 	st.text("Once we've explored the data, we may need to clean it before running an analysis.")
-	with open(r"./content/clean.md",'r') as clr:
+	with open(r".\content\eda\clean.md",'r') as clr:
 
 		st.markdown(clr.read())	
 
 st.divider()
 
-df.drop_duplicates(inplace=True)
+df.drop_duplicates(inplace=True
+	)
 df.rename(columns={"Name": "Title", "Year": "Publication Year", "User Rating": "Rating"}, inplace=True)
+df = df.astype(str)
 df["Price"] = df["Price"].astype(float)
+
 st.subheader("Renamed column")
 st.dataframe(df.head(),hide_index=True)
 st.subheader("Converted datatype")
