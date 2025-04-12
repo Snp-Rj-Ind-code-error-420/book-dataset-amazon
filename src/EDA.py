@@ -97,10 +97,54 @@ st.divider()
 df.drop_duplicates(inplace=True
 	)
 df.rename(columns={"Name": "Title", "Year": "Publication Year", "User Rating": "Rating"}, inplace=True)
-df = df.astype(str)
+# df = df.astype(str)
 df["Price"] = df["Price"].astype(float)
 
 st.subheader("Renamed column")
 st.dataframe(df.head(),hide_index=True)
 st.subheader("Converted datatype")
 st.dataframe(df.dtypes,column_config={"0":"data types"})
+cor=pd.DataFrame()
+cor2=pd.DataFrame()
+# standardization
+# """
+# 1.
+# Code
+
+# X_scaled = (X - mean(X)) / std(X)
+# Where:
+# X is the original value.
+# mean(X) is the mean of the feature.
+# std(X) is the standard deviation of the feature.
+# X_scaled is the scaled value.
+# """
+# cor['Rating']=(df['Rating'] - df['Rating'].mean())/df['Rating'].std()
+# cor['Reviews']=((df['Reviews']-df['Reviews'].mean())/df['Reviews'].std())
+# cor['Price']=(df['Price']-df['Price'].mean())/df['Price'].std()
+# st.dataframe(cor.corr())
+# st.scatter_chart(cor,
+# 	x="Rating",
+# 	y="Reviews",
+# 	size="Price"
+# 	)
+
+# 1. Min-Max Scaling (Normalization)
+# This method scales data to a specific range, typically between 0 and 1. 
+# Code
+
+# X_scaled = (X - X_min) / (X_max - X_min)
+# Where:
+# X is the original value.
+# X_min is the minimum value of the feature.
+# X_max is the maximum value of the feature.
+# X_scaled is the scaled value.
+
+cor2['Rating']=(df['Rating'] - df['Rating'].min())/(df['Rating'].max()-df['Rating'].min())
+# cor2['Rating']=df['Rating']
+cor2['Reviews']=(df['Reviews']-df['Reviews'].min())/(df['Reviews'].max()-df['Reviews'].min())
+cor2['Price']=(df['Price']-df['Price'].min())/(df['Price'].max()-df['Price'].min())
+st.dataframe(cor2.corr())
+st.scatter_chart(cor2,
+	x="Rating",
+	y="Reviews"
+	)
