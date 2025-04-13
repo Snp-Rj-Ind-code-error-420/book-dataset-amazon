@@ -3,6 +3,8 @@ import pandas as pd
 # global df
 df=pd.DataFrame()
 df=pd.read_csv(r".\dataset\bestsellers with categories.csv")
+auth3=pd.read_csv(r".\dataset\auth.csv")
+# df=pd.read_csv(r"bestsellers with categories.csv")
 
 df2=df.drop_duplicates()
 df2.rename(columns={"Name": "Title", "Year": "Publication Year", "User Rating": "Rating"},inplace=True)
@@ -50,3 +52,9 @@ cor2['Reviews']=(df2['Reviews']-df2['Reviews'].min())/(df2['Reviews'].max()-df2[
 cor2['Price']=(df2['Price']-df2['Price'].min())/(df2['Price'].max()-df2['Price'].min())
 rating=df2.sort_values(by='Rating',ascending=False)
 reviews=df2.sort_values(by='Reviews',ascending=False)
+author_counts = df2['Author'].value_counts()
+auth2=author_counts.head(10)
+# auth2.to_csv('auth.csv')
+# print(auth3.shape)
+# print(auth3.iloc[0,1])
+	

@@ -33,3 +33,40 @@ with st.container(border=True):
 	st.dataframe(understand.reviews.head(20),
 		hide_index=True
 		)
+
+	with open(r".\content\insight\insight3.md") as ins3:
+
+		st.markdown(ins3.read())
+
+	st.dataframe(understand.author_counts.head(10)
+		)
+	col=[]
+	col=st.columns(5,border=True)
+	x,y=0,0
+	# print(col)
+	for i in col:
+		if x>0:
+
+			i.metric(understand.auth3.iloc[x,0],
+				understand.auth3.iloc[x,1],
+				int(understand.auth3.iloc[x,1]-understand.auth3.iloc[x-1,1]))
+		else:
+			i.metric(understand.auth3.iloc[x,0],understand.auth3.iloc[x,1],0)
+
+		x+=1
+		
+	
+
+	col=[]
+	# dasd
+	col=st.columns(5,border=True)
+	for i in col:
+
+		i.metric(understand.auth3.iloc[x,0],
+			understand.auth3.iloc[x,1],
+			int(understand.auth3.iloc[x,1]-understand.auth3.iloc[x-1,1]))
+		x+=1
+
+		
+	
+
