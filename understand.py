@@ -2,8 +2,8 @@ import pandas as pd
 
 # global df
 df=pd.DataFrame()
-df=pd.read_csv(r".\dataset\bestsellers with categories.csv")
-auth3=pd.read_csv(r".\dataset\auth.csv")
+df=pd.read_csv("bestsellers with categories.csv")
+auth3=pd.read_csv("auth.csv")
 # df=pd.read_csv(r"bestsellers with categories.csv")
 
 df2=df.drop_duplicates()

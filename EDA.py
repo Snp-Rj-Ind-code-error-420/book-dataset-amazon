@@ -1,5 +1,5 @@
 import streamlit as st
-from dataset import understand 
+import understand 
 
 
 st.set_page_config(page_title="EDA", 
@@ -80,7 +80,7 @@ st.dataframe(understand.df.dtypes,
 st.divider()
 
 with st.container(border=True):
-	with open(r".\content\eda\enhance.md",'r') as enh:
+	with open("enhance.md",'r') as enh:
 		st.markdown(enh.read())
 
 st.divider()
@@ -89,7 +89,7 @@ with st.container(border=True):
 	st.subheader("2.Cleaning the data")
 
 	st.text("Once we've explored the data, we may need to clean it before running an analysis.")
-	with open(r".\content\eda\clean.md",'r') as clr:
+	with open("clean.md",'r') as clr:
 
 		st.markdown(clr.read())	
 
