@@ -1,9 +1,9 @@
 import streamlit as st
 
 pages=[
-	st.Page("homepage.py",title="Overview",icon=":material/subject:"),
-	st.Page("EDA.py",title="EDA(Exploratory Data Analysis)",icon=":material/data_exploration:"),
-	st.Page("insights.py",title="Insights",icon=":material/search_insights:"),
+	st.Page("pages/homepage.py",title="Overview",icon=":material/subject:"),
+	st.Page("pages/EDA.py",title="EDA(Exploratory Data Analysis)",icon=":material/data_exploration:"),
+	st.Page("pages/insights.py",title="Insights",icon=":material/search_insights:"),
 ]
 
 

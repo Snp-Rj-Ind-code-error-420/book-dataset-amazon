@@ -1,5 +1,5 @@
 import streamlit as st
-import understand 
+from pages import understand 
 
 st.set_page_config(page_title="Analysis", 
 	page_icon="""<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA33F7">
@@ -16,7 +16,7 @@ st.divider()
 with st.container(border=True):
 
 	st.subheader("What are the most popular books on amazon?")
-	with open("insight.md") as ins:
+	with open("md/insight.md") as ins:
 
 		st.markdown(ins.read())
 
@@ -26,7 +26,7 @@ with st.container(border=True):
 		)
 
 
-	with open("insight2.md") as ins2:
+	with open("md/insight2.md") as ins2:
 
 		st.markdown(ins2.read())
 
@@ -34,7 +34,7 @@ with st.container(border=True):
 		hide_index=True
 		)
 
-	with open("insight3.md") as ins3:
+	with open("md/insight3.md") as ins3:
 
 		st.markdown(ins3.read())
 

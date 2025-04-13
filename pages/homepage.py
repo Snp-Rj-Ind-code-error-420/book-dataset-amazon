@@ -12,21 +12,21 @@ st.title(":violet[:material/analytics:]   :violet[Amazon Books Dataset Analysis]
 st.divider()
 
 st.header("Project Overview",divider="rainbow")
-with open("overview.md",'r') as over:
+with open("md/overview.md",'r') as over:
 	st.markdown(over.read())
 
 st.header("Dataset Description",divider=True)
-with open("description.md",'r') as disc:
+with open("md/description.md",'r') as disc:
 	st.markdown(disc.read())
 
 st.header("Research Questions",divider=True)
-with open("research.md",'r') as res:
+with open("md/research.md",'r') as res:
 	st.markdown(res.read())
 
 st.header("Insights",divider=True)
-with open("insight.md",'r') as ins:
+with open("md/insight.md",'r') as ins:
 	st.markdown(ins.read())
 
 st.header("Conclusion",divider=True)
-with open ("conclusion.txt",'r') as con:
+with open ("md/conclusion.txt",'r') as con:
 	st.text(con.read())
