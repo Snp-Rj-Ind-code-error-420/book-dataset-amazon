@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+from dataset import understand 
 
 
 st.set_page_config(page_title="EDA", 
@@ -8,7 +8,7 @@ st.set_page_config(page_title="EDA",
 	33-23.5 56.5T800-80H480Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 23 3 45t9 43l122-122q11-11 26.5-11.5T348-516l104 87 131-131h-23q-17 
 	0-28.5-11.5T520-600q0-17 11.5-28.5T560-640h120q17 0 28.5 11.5T720-600v120q0 17-11.5 28.5T680-440q-17 0-28.5-11.5T640-480v-23L482-346q-11 11-26.5 12T428-344l-103-88-118 
 	118q42 69 113.5 111.5T480-160Zm300 20q17 0 28.5-11.5T820-180q0-17-11.5-28.5T780-220q-17 0-28.5 11.5T740-180q0 17 11.5 28.5T780-140ZM455-480Z"/></svg>""",
-	layout="centered",
+	layout="wide",
 	initial_sidebar_state="auto",  
 	menu_items=None)
 
@@ -19,7 +19,7 @@ st.divider()
 st.header("Data Cleaning")
 st.text("The dataset will be cleaned to remove any missing or duplicate values.")
 
-df=pd.read_csv(r".\dataset\bestsellers with categories.csv")
+
 with st.container(border=True):
 	st.subheader("1.Explore the Data")
 
@@ -28,7 +28,7 @@ st.divider()
 st.code("""
 	# Get the first 5 rows of the spreadsheet
 print(df.head())""")
-st.dataframe(df.head())
+st.dataframe(understand.df.head())
 
 st.divider()
 
@@ -36,7 +36,7 @@ st.code("""
 # Get the shape of the spreadsheet
 print(df.shape)
 """)
-st.dataframe(df.shape,
+st.dataframe(understand.df.shape,
 	column_config={"value":"rows x columns"}
 	)
 
@@ -46,7 +46,7 @@ st.code("""
 # Get the column names of the spreadsheet
 print(df.columns)
 """)
-st.dataframe(df.columns,
+st.dataframe(understand.df.columns,
 	column_config={"0":"column names"}
 	)
 
@@ -56,7 +56,7 @@ st.code("""
 # Get summary statistics for each column
 print(df.describe())
 """)
-st.dataframe(df.describe())
+st.dataframe(understand.df.describe())
 
 st.divider()
 
@@ -64,7 +64,7 @@ st.code("""
 #Get the number of unique element present in each column 
 print(df.nunique())
 """)
-st.dataframe(df.nunique(),
+st.dataframe(understand.df.nunique(),
 	column_config={"0":"count of unique elements"})
 
 st.divider()
@@ -73,7 +73,7 @@ st.code("""
 #Get the data type of each column 
 print(df.dtypes)
 """)
-st.dataframe(df.dtypes,
+st.dataframe(understand.df.dtypes,
 	column_config={"0":"data types"}
 	)
 # st.dataframe(df.duplicated().sum())
@@ -95,57 +95,19 @@ with st.container(border=True):
 
 st.divider()
 
-df.drop_duplicates(inplace=True
-	)
-df.rename(columns={"Name": "Title", "Year": "Publication Year", "User Rating": "Rating"}, inplace=True)
-# df = df.astype(str)
-df["Price"] = df["Price"].astype(float)
+
+
 
 st.subheader("Renamed column")
-st.dataframe(df.head(),hide_index=True)
+st.dataframe(understand.df2.head(),hide_index=True)
 st.subheader("Converted datatype")
-st.dataframe(df.dtypes,column_config={"0":"data types"})
-cor=pd.DataFrame()
-cor2=pd.DataFrame()
-# standardization
-# """
-# 1.
-# Code
+st.dataframe(understand.df2.dtypes,column_config={"0":"data types"})
 
-# X_scaled = (X - mean(X)) / std(X)
-# Where:
-# X is the original value.
-# mean(X) is the mean of the feature.
-# std(X) is the standard deviation of the feature.
-# X_scaled is the scaled value.
-# """
-# cor['Rating']=(df['Rating'] - df['Rating'].mean())/df['Rating'].std()
-# cor['Reviews']=((df['Reviews']-df['Reviews'].mean())/df['Reviews'].std())
-# cor['Price']=(df['Price']-df['Price'].mean())/df['Price'].std()
-# st.dataframe(cor.corr())
-# st.scatter_chart(cor,
-# 	x="Rating",
-# 	y="Reviews",
-# 	size="Price"
-# 	)
 
-# 1. Min-Max Scaling (Normalization)
-# This method scales data to a specific range, typically between 0 and 1. 
-# Code
 
-# X_scaled = (X - X_min) / (X_max - X_min)
-# Where:
-# X is the original value.
-# X_min is the minimum value of the feature.
-# X_max is the maximum value of the feature.
-# X_scaled is the scaled value.
 
-cor2['Rating']=(df['Rating'] - df['Rating'].min())/(df['Rating'].max()-df['Rating'].min())
-# cor2['Rating']=df['Rating']
-cor2['Reviews']=(df['Reviews']-df['Reviews'].min())/(df['Reviews'].max()-df['Reviews'].min())
-cor2['Price']=(df['Price']-df['Price'].min())/(df['Price'].max()-df['Price'].min())
-st.dataframe(cor2.corr())
-st.scatter_chart(cor2,
+st.dataframe(understand.cor2.corr())
+st.scatter_chart(understand.cor2,
 	x="Rating",
 	y="Reviews"
 	)
