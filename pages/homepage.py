@@ -24,7 +24,7 @@ with open("md/research.md",'r') as res:
 	st.markdown(res.read())
 
 st.header("Insights",divider=True)
-with open("md/insight.md",'r') as ins:
+with open("md/sight.md",'r') as ins:
 	st.markdown(ins.read())
 
 st.header("Conclusion",divider=True)
