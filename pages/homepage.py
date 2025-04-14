@@ -27,6 +27,10 @@ st.header("Insights",divider=True)
 with open("md/sight.md",'r') as ins:
 	st.markdown(ins.read())
 
+st.header("Tools and Technologies",divider=True)
+with open("md/tech.md","r") as tech:
+	st.markdown(tech.read())
+
 st.header("Conclusion",divider=True)
 with open ("md/conclusion.txt",'r') as con:
 	st.text(con.read())

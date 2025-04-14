@@ -1,4 +1,4 @@
-### Top 10 most popular Author 
+
 To  acquire the top 10 most popular author
 ```python
 author_counts = df2['Author'].value_counts()

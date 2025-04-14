@@ -15,7 +15,8 @@ st.title(":violet[:material/search_insights:]   :violet[Insights]")
 st.divider()
 with st.container(border=True):
 
-	st.subheader("What are the most popular books on amazon?")
+	# st.subheader("What are the most popular books on amazon?")
+	st.header("Top 20 most popular book by rating are",divider=True)
 	with open("md/insight.md") as ins:
 
 		st.markdown(ins.read())
@@ -25,7 +26,7 @@ with st.container(border=True):
 		hide_index=True
 		)
 
-
+	st.header("Top 20 most popular book by most reviews are ",divider=True)
 	with open("md/insight2.md") as ins2:
 
 		st.markdown(ins2.read())
@@ -33,7 +34,7 @@ with st.container(border=True):
 	st.dataframe(understand.reviews.head(20),
 		hide_index=True
 		)
-
+	st.header("Top 10 most popular Author ",divider=True)
 	with open("md/insight3.md") as ins3:
 
 		st.markdown(ins3.read())
@@ -67,6 +68,30 @@ with st.container(border=True):
 			int(understand.auth3.iloc[x,1]-understand.auth3.iloc[x-1,1]))
 		x+=1
 
-		
+
+	st.header("How do ratings and reviews correlate with book popularity?",divider=True)
+	with open("md/insight4.md") as ins4:
+
+		st.markdown(ins4.read())
+
+	st.subheader("Correlation calculation",divider=True)
+	st.dataframe(understand.cor2.corr())
 	
+	st.subheader("Correlation scatter graph",divider=True)
+	with st.container(border=True):
+
+		st.scatter_chart(understand.cor2,
+			x="Rating",
+			y="Reviews",
+			size=100,
+			)
+
+
+	st.subheader("Genre Analysis",divider=True)
+	with open("md/insight5.md") as ins5:
+
+		st.markdown(ins5.read())
+	# st.dataframe(understand.genre)
+	st.subheader("Genre count",divider=True)
+	st.bar_chart(understand.genre,horizontal=True,height=250)
 

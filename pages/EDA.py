@@ -106,8 +106,3 @@ st.dataframe(understand.df2.dtypes,column_config={"0":"data types"})
 
 
 
-st.dataframe(understand.cor2.corr())
-st.scatter_chart(understand.cor2,
-	x="Rating",
-	y="Reviews"
-	)
