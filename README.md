@@ -15,6 +15,6 @@ The Amazon Books dataset[^1] contains the following variables:
 - Reviews: Number of reviews for the book
 
 ## Preview
-[![YouTube](http://i.ytimg.com/vi/uuaYtpWqZ78/hqdefault.jpg)](https://www.youtube.com/watch?v=uuaYtpWqZ78)
+<!-- [![YouTube](http://i.ytimg.com/vi/uuaYtpWqZ78/hqdefault.jpg)](https://www.youtube.com/watch?v=uuaYtpWqZ78) -->
 
 [^1]: [source](https://www.kaggle.com/datasets/sootersaalu/amazon-top-50-bestselling-books-2009-2019?resource=download)
